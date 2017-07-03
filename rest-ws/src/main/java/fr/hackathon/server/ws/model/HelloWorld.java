@@ -2,6 +2,8 @@ package fr.hackathon.server.ws.model;
 
 public class HelloWorld {
 	
+	private long id;
+	
 	private String message;
 
 	
@@ -10,6 +12,14 @@ public class HelloWorld {
 	}
 
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getMessage() {
 		return message;
 	}
