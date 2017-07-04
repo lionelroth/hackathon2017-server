@@ -1,9 +1,10 @@
-package fr.hackathon.server;
+package fr.hackathon.generated.model;
 // Generated 4 juil. 2017 00:40:49 by Hibernate Tools 4.3.5.Final
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -13,7 +14,7 @@ import org.apache.commons.logging.LogFactory;
  * @author Hibernate Tools
  */
 @Stateless
-public class HelloWorldHome {
+public class HelloWorldDAO {
 
 	private static final Log log = LogFactory.getLog(HelloWorldHome.class);
 

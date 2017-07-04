@@ -10,4 +10,6 @@ public interface HelloWorldDAO {
 	
 	public List<HelloWorld> getAll();
 	
+	public boolean set(HelloWorld hw);
+	
 }

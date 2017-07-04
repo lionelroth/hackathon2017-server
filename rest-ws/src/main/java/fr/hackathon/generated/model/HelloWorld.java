@@ -1,10 +1,11 @@
-package fr.hackathon.server;
+package fr.hackathon.generated.model;
 // Generated 4 juil. 2017 00:40:49 by Hibernate Tools 4.3.5.Final
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 

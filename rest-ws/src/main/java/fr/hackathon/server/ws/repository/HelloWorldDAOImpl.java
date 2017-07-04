@@ -37,6 +37,12 @@ public class HelloWorldDAOImpl implements HelloWorldDAO {
 		return allHelloWorld;
 	}
 	
+	@Override
+	public boolean set(HelloWorld hw) {
+		System.out.println("Le HW suivant a été ajouté dans la DB avec succès : " + hw);
+		return true;
+	}
+	
 	private static HelloWorld generateHelloWorld() {
 		HelloWorld hello = new HelloWorld();
 		hello.setMessage("APPELEZ LES HENDEKS !");
@@ -52,4 +58,5 @@ public class HelloWorldDAOImpl implements HelloWorldDAO {
 		hello.setMessage("Hello World !");
 		return hello;
 	}
+
 }

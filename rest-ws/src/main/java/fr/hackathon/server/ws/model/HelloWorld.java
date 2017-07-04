@@ -28,4 +28,9 @@ public class HelloWorld {
 		this.message = message;
 	}
 
+	@Override
+	public String toString() {
+		return "HelloWorld [id=" + id + ", message=" + message + "]";
+	}
+	
 }

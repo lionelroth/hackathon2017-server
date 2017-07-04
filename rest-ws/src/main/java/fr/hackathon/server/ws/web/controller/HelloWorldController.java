@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,14 +20,28 @@ public class HelloWorldController {
     @Resource
     private HelloWorldDAO helloWorldDAO;
 
-    @RequestMapping(value="/helloWorld/{message}", method=RequestMethod.GET)
+    @RequestMapping(value="/helloWorlds/get/{message}", method=RequestMethod.GET)
     public HelloWorld get(@PathVariable String message){
         return helloWorldDAO.get(message);
     }
 
-    @RequestMapping(value="/helloWorlds", method=RequestMethod.GET)
+    @RequestMapping(value="/helloWorlds/get", method=RequestMethod.GET)
     public List<HelloWorld> getAll(){
         return helloWorldDAO.getAll();
     }
+    
+// 	@RequestMapping(value="/helloWorlds/post", method=RequestMethod.POST)
+// 	public Response createProductInJSON(HelloWorld helloWorld) {
+//
+// 		String result = "helloWorld created : " + helloWorld;
+// 		return Response.status(201).entity(result).build();
+//
+// 	}
+ 	
+ 	@RequestMapping(value="/helloWorlds/post/{buttonId}", method = RequestMethod.POST)
+	public boolean add(@PathVariable String buttonId, @RequestBody HelloWorld input) {
+ 		System.out.println("buttonid : " + buttonId + "\nHelloWorld : " + input);
+ 		return helloWorldDAO.set(input); 
+ 	}
     
 }
