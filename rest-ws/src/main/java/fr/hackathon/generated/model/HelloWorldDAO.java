@@ -7,6 +7,8 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * Home object for domain model class HelloWorld.
@@ -14,22 +16,26 @@ import org.apache.commons.logging.LogFactory;
  * @author Hibernate Tools
  */
 @Stateless
+@Repository("helloWorldDAO")
 public class HelloWorldDAO {
 
-	private static final Log log = LogFactory.getLog(HelloWorldHome.class);
+	private static final Log log = LogFactory.getLog(HelloWorldDAO.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void persist(HelloWorld transientInstance) {
+	public boolean persist(HelloWorld transientInstance) {
 		log.debug("persisting HelloWorld instance");
+		boolean success = false;
 		try {
 			entityManager.persist(transientInstance);
+			success = true;
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
 			throw re;
 		}
+		return success;
 	}
 
 	public void remove(HelloWorld persistentInstance) {

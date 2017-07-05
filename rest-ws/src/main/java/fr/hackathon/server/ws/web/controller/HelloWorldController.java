@@ -19,11 +19,17 @@ public class HelloWorldController {
 
     @Resource
     private HelloWorldDAO helloWorldDAO;
+//	@Autowired
+//    private HelloWorldDAO helloWorldDAO; //DAO hbm généré, vrai accès BDD
 
     @RequestMapping(value="/helloWorlds/get/{message}", method=RequestMethod.GET)
     public HelloWorld get(@PathVariable String message){
         return helloWorldDAO.get(message);
     }
+//    @RequestMapping(value="/helloWorlds/get/{id}", method=RequestMethod.GET)
+//    public HelloWorld get(@PathVariable Integer id){
+//        return helloWorldDAO.findById(id);
+//    }
 
     @RequestMapping(value="/helloWorlds/get", method=RequestMethod.GET)
     public List<HelloWorld> getAll(){

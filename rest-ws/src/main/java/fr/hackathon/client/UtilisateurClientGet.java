@@ -7,14 +7,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class HelloWorldClientGet {
+public class UtilisateurClientGet {
 
-	private static final String URL_GET = "http://localhost:8080/rest-ws/api/helloWorlds/get/";
+private static final String URL_GET = "http://mon_ordi:8080/rest-ws/server/utilisateur/";
 	
 	public static void main(String[] args) {
 
 		try {
-			String trucCherché = "0";
+			String trucCherché = "123456789";
 			URL url = new URL(URL_GET + trucCherché);
 			System.out.println("get quoi ? " + trucCherché);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();

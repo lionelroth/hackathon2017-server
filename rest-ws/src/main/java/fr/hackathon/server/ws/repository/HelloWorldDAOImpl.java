@@ -45,16 +45,19 @@ public class HelloWorldDAOImpl implements HelloWorldDAO {
 	
 	private static HelloWorld generateHelloWorld() {
 		HelloWorld hello = new HelloWorld();
+		hello.setId(0);
 		hello.setMessage("APPELEZ LES HENDEKS !");
 		return hello;
 	}
 	private static HelloWorld generateByeWorld() {
 		HelloWorld hello = new HelloWorld();
+		hello.setId(1);
 		hello.setMessage("F5 F5 F5");
 		return hello;
 	}
 	private static HelloWorld generateStandardHelloWorld() {
 		HelloWorld hello = new HelloWorld();
+		hello.setId(2);
 		hello.setMessage("Hello World !");
 		return hello;
 	}
