@@ -1,7 +1,9 @@
-package fr.hackathon.server.ws.repository;
+package fr.hackathon.server.ws.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +29,7 @@ public class HelloWorldDAOImpl implements HelloWorldDAO {
 		}
 		return hello;
 	}
-
+	
 	@Override
 	public List<HelloWorld> getAll() {
 		List<HelloWorld> allHelloWorld = new ArrayList<HelloWorld>();

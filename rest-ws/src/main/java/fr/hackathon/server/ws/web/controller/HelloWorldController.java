@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.hackathon.server.ws.dao.HelloWorldDAO;
 import fr.hackathon.server.ws.model.HelloWorld;
-import fr.hackathon.server.ws.repository.HelloWorldDAO;
 
 @RestController
 @RequestMapping(value="/api")

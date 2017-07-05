@@ -14,6 +14,7 @@ private static final String URL_GET = "http://mon_ordi:8080/rest-ws/server/utili
 	public static void main(String[] args) {
 
 		try {
+			
 			String trucCherché = "123456789";
 			URL url = new URL(URL_GET + trucCherché);
 			System.out.println("get quoi ? " + trucCherché);

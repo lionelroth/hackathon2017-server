@@ -1,12 +1,13 @@
 package fr.hackathon.server.ws.dto;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class ButtonIdAndCombinaisonDTO {
 
+	private boolean success;
 	private int id;
+	private ArrayList<Integer> couleurs;
 	
-	private LinkedList<Integer> couleurs;
 
 	
 	public int getId() {
@@ -17,12 +18,21 @@ public class ButtonIdAndCombinaisonDTO {
 		this.id = id;
 	}
 
-	public LinkedList<Integer> getCouleurs() {
+	public ArrayList<Integer> getCouleurs() {
 		return couleurs;
 	}
 
-	public void setCouleurs(LinkedList<Integer> couleurs) {
+	public void setCouleurs(ArrayList<Integer> couleurs) {
 		this.couleurs = couleurs;
+	}
+
+	
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 
 	@Override

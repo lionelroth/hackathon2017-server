@@ -1,4 +1,4 @@
-package fr.hackathon.server.ws.repository;
+package fr.hackathon.server.ws.dao;
 
 import java.util.List;
 

@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import fr.hackathon.server.ws.config.WebMvcConfig;
-import fr.hackathon.server.ws.repository.HelloWorldDAO;
+import fr.hackathon.server.ws.dao.HelloWorldDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { fr.hackathon.server.ws.config.ContextConfiguration.class, WebMvcConfig.class })
