@@ -1,5 +1,5 @@
-package fr.hackathon.generated.model;
-// Generated 5 juil. 2017 15:52:02 by Hibernate Tools 4.3.5.Final
+// default package
+// Generated 5 juil. 2017 22:43:03 by Hibernate Tools 4.3.5.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

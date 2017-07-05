@@ -10,11 +10,14 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hackathon_server</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.enable_lazy_load_no_trans">false</property>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
         <property name="hibernate.search.autoregister_listeners">true</property>
         <property name="hibernate.show_sql">false</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
-        <mapping class="fr.hackathon.generated.model.HelloWorld" />
-        <mapping class="fr.hackathon.generated.model.Utilisateur" />
+        <mapping class="Combinaison" />
+        <mapping class="Objectif" />
+        <mapping class="UtilisateurChallenge" />
+        <mapping class="Utilisateur" />
+        <mapping class="HelloWorld" />
     </session-factory>
 </hibernate-configuration>

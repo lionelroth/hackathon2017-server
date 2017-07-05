@@ -1,11 +1,15 @@
-package fr.hackathon.generated.model;
-// Generated 5 juil. 2017 15:52:02 by Hibernate Tools 4.3.5.Final
+// default package
+// Generated 5 juil. 2017 22:43:03 by Hibernate Tools 4.3.5.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -17,12 +21,18 @@ public class Utilisateur implements java.io.Serializable {
 
 	private Integer id;
 	private String idFacebook;
+	private Set objectifs = new HashSet(0);
 
 	public Utilisateur() {
 	}
 
 	public Utilisateur(String idFacebook) {
 		this.idFacebook = idFacebook;
+	}
+
+	public Utilisateur(String idFacebook, Set objectifs) {
+		this.idFacebook = idFacebook;
+		this.objectifs = objectifs;
 	}
 
 	@Id
@@ -44,6 +54,15 @@ public class Utilisateur implements java.io.Serializable {
 
 	public void setIdFacebook(String idFacebook) {
 		this.idFacebook = idFacebook;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur")
+	public Set getObjectifs() {
+		return this.objectifs;
+	}
+
+	public void setObjectifs(Set objectifs) {
+		this.objectifs = objectifs;
 	}
 
 }

@@ -1,5 +1,5 @@
-package fr.hackathon.generated.model;
-// Generated 5 juil. 2017 15:52:02 by Hibernate Tools 4.3.5.Final
+// default package
+// Generated 5 juil. 2017 22:43:03 by Hibernate Tools 4.3.5.Final
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,20 +8,20 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- * Home object for domain model class HelloWorld.
- * @see fr.hackathon.generated.model.HelloWorld
+ * Home object for domain model class UtilisateurChallenge.
+ * @see .UtilisateurChallenge
  * @author Hibernate Tools
  */
 @Stateless
-public class HelloWorldHome {
+public class UtilisateurChallengeHome {
 
-	private static final Log log = LogFactory.getLog(HelloWorldHome.class);
+	private static final Log log = LogFactory.getLog(UtilisateurChallengeHome.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void persist(HelloWorld transientInstance) {
-		log.debug("persisting HelloWorld instance");
+	public void persist(UtilisateurChallenge transientInstance) {
+		log.debug("persisting UtilisateurChallenge instance");
 		try {
 			entityManager.persist(transientInstance);
 			log.debug("persist successful");
@@ -31,8 +31,8 @@ public class HelloWorldHome {
 		}
 	}
 
-	public void remove(HelloWorld persistentInstance) {
-		log.debug("removing HelloWorld instance");
+	public void remove(UtilisateurChallenge persistentInstance) {
+		log.debug("removing UtilisateurChallenge instance");
 		try {
 			entityManager.remove(persistentInstance);
 			log.debug("remove successful");
@@ -42,10 +42,10 @@ public class HelloWorldHome {
 		}
 	}
 
-	public HelloWorld merge(HelloWorld detachedInstance) {
-		log.debug("merging HelloWorld instance");
+	public UtilisateurChallenge merge(UtilisateurChallenge detachedInstance) {
+		log.debug("merging UtilisateurChallenge instance");
 		try {
-			HelloWorld result = entityManager.merge(detachedInstance);
+			UtilisateurChallenge result = entityManager.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -54,10 +54,10 @@ public class HelloWorldHome {
 		}
 	}
 
-	public HelloWorld findById(Integer id) {
-		log.debug("getting HelloWorld instance with id: " + id);
+	public UtilisateurChallenge findById(Integer id) {
+		log.debug("getting UtilisateurChallenge instance with id: " + id);
 		try {
-			HelloWorld instance = entityManager.find(HelloWorld.class, id);
+			UtilisateurChallenge instance = entityManager.find(UtilisateurChallenge.class, id);
 			log.debug("get successful");
 			return instance;
 		} catch (RuntimeException re) {
