@@ -2,9 +2,12 @@ package fr.hackathon.server.ws.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ListIterator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,6 +16,7 @@ import javax.persistence.Table;
 public class Combinaison {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	@Column(name="couleurs")
@@ -36,10 +40,13 @@ public class Combinaison {
 
 	public static String getCouleursAsString(ArrayList<Integer> couleurs) {
 		StringBuilder sb = new StringBuilder();
-		for (Integer couleur : couleurs) {
-			sb.append(couleur);
-			if (couleurs.size() >= couleurs.indexOf(couleur)) {
+		ListIterator<Integer> iterator = couleurs.listIterator();
+		while (iterator.hasNext()) {
+			if ( ! iterator.hasPrevious()) {
+				sb.append(iterator.next());
+			} else {
 				sb.append(",");
+				sb.append(iterator.next());
 			}
 		}
 		return sb.toString();

@@ -1,4 +1,4 @@
-package fr.hackathon.client.util;
+package fr.hackathon.server.util;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

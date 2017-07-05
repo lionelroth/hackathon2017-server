@@ -17,6 +17,7 @@
 		<property name="hbm2ddl.auto">update</property>        
         <mapping class="fr.hackathon.server.ws.model.Utilisateur" />
         <mapping class="fr.hackathon.server.ws.model.Combinaison" />
+        <mapping class="fr.hackathon.server.ws.model.Obectif" />
         <mapping class="fr.hackathon.server.ws.model.HelloWorld" />
     </session-factory>
 </hibernate-configuration>

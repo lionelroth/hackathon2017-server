@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages={"fr.hackathon.server.ws"})
+@ComponentScan(basePackages={"fr.hackathon.server"})
 public class WebMvcConfig  extends WebMvcConfigurerAdapter{
 
 }

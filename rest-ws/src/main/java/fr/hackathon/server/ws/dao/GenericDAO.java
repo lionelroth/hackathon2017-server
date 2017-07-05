@@ -8,8 +8,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import fr.hackathon.client.util.DaoException;
-import fr.hackathon.client.util.HibernateUtil;
+import fr.hackathon.server.util.DaoException;
+import fr.hackathon.server.util.HibernateUtil;
 
 /**
  * Generic class for all the DAOs of the app.

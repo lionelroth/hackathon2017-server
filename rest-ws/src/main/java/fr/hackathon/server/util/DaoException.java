@@ -1,4 +1,4 @@
-package fr.hackathon.client.util;
+package fr.hackathon.server.util;
 
 /**
  * Represents Exceptions thrown by the DAOs
