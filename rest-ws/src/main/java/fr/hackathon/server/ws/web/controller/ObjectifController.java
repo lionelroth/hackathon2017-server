@@ -38,6 +38,8 @@ public class ObjectifController {
  		}
  		catch (Exception e) {
 			e.printStackTrace();
+			allObj = new ArrayList<Objectif>();
+	 		success = false;
 		}
  		AllObjectifsDTO dto = new AllObjectifsDTO();
  		dto.setAllObjectifs(allObj);
@@ -54,13 +56,15 @@ public class ObjectifController {
  		try {
  			List<Objectif> allObjectifs = this.getAll().getAllObjectifs();
  			for (Objectif obj : allObjectifs) {
- 				if (obj.getId_admin() == userId) {	//TODO à compléter
+ 				if (obj.getAdmin().getId() == userId) {	//TODO à compléter
  					objForUser.add(obj);
  				}
  			}
  			success = true;
  		} catch (Exception e) {
 			e.printStackTrace();
+			objForUser = new ArrayList<Objectif>();
+	 		success = false;
 		}
  		AllObjectifsDTO dto = new AllObjectifsDTO();
  		dto.setAllObjectifs(objForUser);

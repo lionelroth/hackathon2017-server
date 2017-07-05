@@ -1,11 +1,17 @@
 package fr.hackathon.server.ws.model;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,14 +32,38 @@ public class Objectif {
 	@Column(name="type", nullable=false, length=1)
 	private Character type;
 	
-	/** TODO : attention à la mousse */
-//	@Column(name="id_admin", nullable=false)
-//	private Utilisateur utilisateur;
-	@JoinColumn(name="id_admin", nullable=false)
-	private int id_admin;
+	@ManyToOne
+	@JoinColumn(name="admin", nullable=false)
+	private Utilisateur admin;
+	
+	@OneToMany
+	@JoinColumn(name="challenge", nullable=false)
+	private List<Challenge> challenges;
+	
+	// TODO INVITÉS
+	// TODO GROUPES/MEMBRES
 	
 	@Column(name="realise", nullable=false, precision=2)
-	private float realise;
+	private BigDecimal realise;
+	
+	@Column(name="montant_vise", nullable=false, precision=2)
+	private BigDecimal montant_vise;
+	
+	@Column(name="date_debut", nullable=false)
+	private Date date_debut;
+	
+	@Column(name="date_fin", nullable=false)
+	private Date date_fin;
+	
+	@Column(name="beneficiaire", nullable=false)
+	private String beneficiaire;
+	
+	
+	
+	
+	
+	
+	
 
 	public int getId_objectif() {
 		return id_objectif;
@@ -67,26 +97,68 @@ public class Objectif {
 		this.type = type;
 	}
 
-	public int getId_admin() {
-		return id_admin;
+	public Utilisateur getAdmin() {
+		return admin;
 	}
 
-	public void setId_admin(int id_admin) {
-		this.id_admin = id_admin;
+	public void setAdmin(Utilisateur admin) {
+		this.admin = admin;
 	}
 
-	public float getRealise() {
+	public List<Challenge> getChallenges() {
+		return challenges;
+	}
+
+	public void setChallenges(List<Challenge> challenges) {
+		this.challenges = challenges;
+	}
+
+	public BigDecimal getRealise() {
 		return realise;
 	}
 
-	public void setRealise(float realise) {
+	public void setRealise(BigDecimal realise) {
 		this.realise = realise;
+	}
+
+	public BigDecimal getMontant_vise() {
+		return montant_vise;
+	}
+
+	public void setMontant_vise(BigDecimal montant_vise) {
+		this.montant_vise = montant_vise;
+	}
+
+	public Date getDate_debut() {
+		return date_debut;
+	}
+
+	public void setDate_debut(Date date_debut) {
+		this.date_debut = date_debut;
+	}
+
+	public Date getDate_fin() {
+		return date_fin;
+	}
+
+	public void setDate_fin(Date date_fin) {
+		this.date_fin = date_fin;
+	}
+
+	public String getBeneficiaire() {
+		return beneficiaire;
+	}
+
+	public void setBeneficiaire(String beneficiaire) {
+		this.beneficiaire = beneficiaire;
 	}
 
 	@Override
 	public String toString() {
 		return "Objectif [id_objectif=" + id_objectif + ", nom_objectif=" + nom_objectif + ", description="
-				+ description + ", type=" + type + ", id_admin=" + id_admin + ", realise=" + realise + "]";
+				+ description + ", type=" + type + ", admin=" + admin + ", challenges=" + challenges + ", realise="
+				+ realise + ", montant_vise=" + montant_vise + ", date_debut=" + date_debut + ", date_fin=" + date_fin
+				+ ", beneficiaire=" + beneficiaire + "]";
 	}
-	
+
 }
