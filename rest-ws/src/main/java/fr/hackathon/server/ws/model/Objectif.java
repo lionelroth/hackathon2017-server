@@ -2,7 +2,7 @@ package fr.hackathon.server.ws.model;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,12 +36,15 @@ public class Objectif {
 	@JoinColumn(name="admin", nullable=false)
 	private Utilisateur admin;
 	
-	@OneToMany
-	@JoinColumn(name="challenge", nullable=false)
-	private List<Challenge> challenges;
+	@OneToMany(mappedBy="objectif")
+//	@JoinColumn(name="objectif")
+	private Set<Challenge> challenges;
 	
 	// TODO INVITÉS
 	// TODO GROUPES/MEMBRES
+//	@OneToMany
+//	@JoinColumn
+//	private Set<Utilisateur> participants;
 	
 	@Column(name="realise", nullable=false, precision=2)
 	private BigDecimal realise;
@@ -105,11 +108,12 @@ public class Objectif {
 		this.admin = admin;
 	}
 
-	public List<Challenge> getChallenges() {
+	
+	public Set<Challenge> getChallenges() {
 		return challenges;
 	}
 
-	public void setChallenges(List<Challenge> challenges) {
+	public void setChallenges(Set<Challenge> challenges) {
 		this.challenges = challenges;
 	}
 

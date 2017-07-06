@@ -1,10 +1,14 @@
 package fr.hackathon.server.ws.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,8 +24,15 @@ public class Challenge {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@Column(name="nom_objectif")
+	@Column(name="nom")
 	private String nom;
+	
+	@Column(name="gratification")
+	private BigDecimal gratification;
+	
+	@ManyToOne
+	@JoinColumn(name="responsable", nullable=false)
+	private Utilisateur responsable;
 
 	public int getId() {
 		return id;
