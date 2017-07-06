@@ -20,7 +20,10 @@ public class Utilisateur {
 	
 	@Column(name="id_facebook", length=50)
 	private String idFB;
-
+	
+	@Column(name="compte")
+	private String compte;
+	
 	public int getId() {
 		return id;
 	}
@@ -37,9 +40,17 @@ public class Utilisateur {
 		this.idFB = idFB;
 	}
 
+	public String getCompte() {
+		return compte;
+	}
+
+	public void setCompte(String compte) {
+		this.compte = compte;
+	}
+
 	@Override
 	public String toString() {
-		return "Utilisateur [id=" + id + ", idFB=" + idFB + "]";
+		return "Utilisateur [id=" + id + ", idFB=" + idFB + ", compte=" + compte + "]";
 	}
-	
+
 }

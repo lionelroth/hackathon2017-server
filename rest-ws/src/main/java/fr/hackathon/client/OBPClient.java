@@ -19,7 +19,9 @@ import com.google.gson.JsonObject;
 public class OBPClient {
 
 	private static final String URL_ROOT = "https://socgen-k-api.openbankproject.com";
-	private static final String URL_OBP_DIRECT_LOGIN = URL_ROOT + "/my/logins/direct";	// nedpoint direct login
+	public static final String URL_OBP_DIRECT_LOGIN = URL_ROOT + "/my/logins/direct";	// endpoint direct login de l'API OBP
+	/** Compte qui représente un compte unique SG sur lequel sont versés tous les montants manipulés par l'appli */
+	public static final String COMPTE_A_CREDITER = "07a49ac2-6e4c-3dbf-afd5-04d8105ebf50"; // user OBP = 1000203894 
 	
 	/**
 	 * testing only
@@ -27,7 +29,9 @@ public class OBPClient {
 	public static void main(String[] args) {
 		String token = directLogin();
 		System.out.println("token received : " + token);
-		boolean success = effectuerVirement(token, Float.parseFloat("10.15"));
+		// juste pour les tests, dans l'appel nominal on récupère ce compte dans la bdd
+		String compteADebiter = "410ad4eb-9f63-300f-8cb9-12f0ab677521";	// user = 1000203892 
+		boolean success = effectuerVirement(Float.parseFloat("10.15"), compteADebiter, COMPTE_A_CREDITER );
 		System.out.println("virement ? success " + success);
 	}
 
@@ -82,21 +86,22 @@ public class OBPClient {
 	}
 	
 	/**
-	 * Effectue virement depuis compte du user appli vers le compte garant SG
-	 * @param token reçu de l'appel de directLogin
-	 * @param amount montant du virement à effectué (issu du challenge déclenché cf BDD)
+	 * Effectue virement d'un compte à un autre : 
+	 * 		-	user valide un challenge monétisé : depuis cpt user vers compte SG
+	 * 		-	monétisation de la cagnotte de l'objectif : depuis le cpt SG vers le cpt associé à l'objectif  
+	 * @param amount montant du virement à effectuer 
+	 * @param compteADebiter le compte d'où sera prélevé l'argent
+	 * @param compteADebiter le compte sur lequel sera versé l'argent
 	 * @return <code>true</code> si le virement a marché, <code>false</code> sinon
 	 */
-	private static boolean effectuerVirement(String token, float amount) {
+	public static boolean effectuerVirement(float amount, String compteADebiter, String compteACrediter) {
 		boolean success = false;
 		try {
+			String token = directLogin();
 			
-			String compteADebiter = "410ad4eb-9f63-300f-8cb9-12f0ab677521";	// user = 1000203892 
-			String compteACrediter = "07a49ac2-6e4c-3dbf-afd5-04d8105ebf50"; // user = 1000203894 
-			String banqueId1 = "00100";	//id de la banque de l'utilisateur à débiter
-			String banqueId2 = "00100";	//id de la banque de l'utilisateur à créditer
-//			String URL_OBP_VIREMENT = URL_ROOT + "/banks/" + banqueId1 + "/accounts/" + compteADebiter + "/owner/transaction-request-types/SANDBOX_TAN/transaction-requests";
-			String URL_OBP_VIREMENT = "https://socgen-k-api.openbankproject.com/obp/v3.0.0/banks/00100/accounts/410ad4eb-9f63-300f-8cb9-12f0ab677521/owner/transaction-request-types/SANDBOX_TAN/transaction-requests";
+			String banqueId = "00100";	//id de la banque (virements internes, toujours la même banque)
+			//url :	https://socgen-k-api.openbankproject.com/obp/v3.0.0/banks/00100/accounts/410ad4eb-9f63-300f-8cb9-12f0ab677521/owner/transaction-request-types/SANDBOX_TAN/transaction-requests";
+			String URL_OBP_VIREMENT = URL_ROOT + "/obp/v3.0.0/banks/" + banqueId + "/accounts/" + compteADebiter + "/owner/transaction-request-types/SANDBOX_TAN/transaction-requests";
 			
 			URL url = new URL(URL_OBP_VIREMENT);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -104,7 +109,9 @@ public class OBPClient {
 			conn.setRequestProperty("Content-Type", "application/json");
 			conn.setRequestProperty("Authorization", "DirectLogin token=\"" + token  + "\"");
 			conn.setDoOutput(true);
-			String jsonValue = "{ \"to\":{    \"bank_id\":\"" + banqueId2 + "\",    \"account_id\":\""+ compteADebiter + "\"  },  \"value\":{    \"currency\":\"XAF\",    \"amount\":\"" + amount + "\"  },  \"description\":\"Good\"}";
+			
+			//json body :  {  "to":{    "bank_id":"00100",    "account_id":"07a49ac2-6e4c-3dbf-afd5-04d8105ebf50"  },  "value":{    "currency":"XAF",    "amount":"10"  },  "description":"Good"}
+			String jsonValue = "{ \"to\":{    \"bank_id\":\"" + banqueId + "\",    \"account_id\":\""+ COMPTE_A_CREDITER + "\"  },  \"value\":{    \"currency\":\"XAF\",    \"amount\":\"" + amount + "\"  },  \"description\":\"Good\"}";
 			OutputStream outputStr = conn.getOutputStream();
 			outputStr.write(jsonValue.getBytes("UTF-8"));
 			

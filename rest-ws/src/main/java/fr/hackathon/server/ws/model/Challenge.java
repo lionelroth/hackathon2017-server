@@ -11,11 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- * TODO A FINIR 
- * @author Lionel
- *
- */
 @Entity
 @Table(name="challenge")
 public class Challenge {
@@ -31,7 +26,11 @@ public class Challenge {
 	private BigDecimal gratification;
 	
 	@ManyToOne
-	@JoinColumn(name="responsable", nullable=false)
+	@JoinColumn(name="objectif")
+	private Objectif objectif;
+	
+	@ManyToOne
+	@JoinColumn(name="responsable")
 	private Utilisateur responsable;
 
 	public int getId() {
@@ -50,11 +49,34 @@ public class Challenge {
 		this.nom = nom;
 	}
 
+	public BigDecimal getGratification() {
+		return gratification;
+	}
+
+	public void setGratification(BigDecimal gratification) {
+		this.gratification = gratification;
+	}
+
+	public Utilisateur getResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(Utilisateur responsable) {
+		this.responsable = responsable;
+	}
+
+	public Objectif getObjectif() {
+		return objectif;
+	}
+
+	public void setObjectif(Objectif objectif) {
+		this.objectif = objectif;
+	}
+
 	@Override
 	public String toString() {
-		return "Challenge [id=" + id + ", nom=" + nom + "]";
+		return "Challenge [id=" + id + ", nom=" + nom + ", gratification=" + gratification + ", objectif=" + objectif
+				+ ", responsable=" + responsable + "]";
 	}
-	
-	
-	
+
 }
